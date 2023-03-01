@@ -50,3 +50,9 @@ group :test do
   gem "rspec", "~> 3.10"
   gem "rspec-json_expectations", "~> 2.2"
 end
+
+# Generate fake data
+gem "faker"
+
+# Generate fake images
+gem "lorempixel"
