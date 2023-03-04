@@ -15,7 +15,7 @@ puts "🌱 Seeding movies..."
       title: Faker::Movie.title,
       director: Faker::Name.unique.name,
       year: rand(1985..2015),
-      plot: Faker::Lorem.words,
+      plot: Faker::Lorem.paragraphs(sentence_count: rand(2..8)),
       poster: Faker::Quote.singular_siegler,
       user_id: user.id
     )
