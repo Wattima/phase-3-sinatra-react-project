@@ -7,4 +7,9 @@ class ApplicationController < Sinatra::Base
     movies.to_json
   end
 
+  get "/users" do
+    users = User.all
+    users.to_json(include: :movies)
+  end
+
 end

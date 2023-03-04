@@ -17,7 +17,7 @@ puts "🌱 Seeding movies..."
       year: rand(1985..2015),
       plot: Faker::Lorem.words,
       poster: Faker::Quote.singular_siegler,
-      user_id: rand(1..10)
+      user_id: user.id
     )
   end
 end
