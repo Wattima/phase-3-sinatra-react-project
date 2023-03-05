@@ -1,25 +1,18 @@
-puts "🌱 Seeding movies..."
+require 'faker'
 
-# Seed your database here
+# Create some users
 10.times do
-  # create a game with random data
-  user = User.create(
-    username: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: Faker::Lorem.word
+  User.create(
+    username: Faker::Internet.username,
+    password: 'password'
   )
-
-  # create between 1 and 5 reviews for each game
-  rand(1..5).times do
-    Movie.create(
-      title: Faker::Movie.title,
-      director: Faker::Name.unique.name,
-      year: rand(1985..2015),
-      plot: Faker::Lorem.paragraphs,
-      poster: Faker::Quote.singular_siegler,
-      user_id: user.id
-    )
-  end
 end
 
-puts "✅ Done seeding!"
+# Create some movies
+5.times do
+  Movie.create(
+    title: Faker::Movie.title,
+    description: Faker::Lorem.paragraph
+  )
+end
+

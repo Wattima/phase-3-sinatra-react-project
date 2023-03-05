@@ -1,28 +1,19 @@
-require 'pry'
+# require 'pry'
 
-class UsersController < ApplicationController
+# class UsersController < ApplicationController
+#   post '/login' do
+#     user = User.find_by(username: params[:username])
+#     if user && user.authenticate(params[:password])
+#       session[:user_id] = user.id
+#       { success: true }.to_json
+#     else
+#       { success: false, error: 'Invalid username or password' }.to_json
+#     end
+#   end
 
-  get '/users' do
-    users = User.all.includes(:movies)
-    users.to_json(:include => [:movies])
-  end
+#   delete '/logout' do
+#     session.clear
+#     { success: true }.to_json
+#   end
 
-  post '/signup' do
-    userExists = User.find_by_username(params[:username])
-    if userExists
-      { message: "This user already exists. Please log in." }.to_json
-    else
-      User.create(
-        username: params[:username]
-      )
-      userRefresh = User.all.includes(:movies)
-      userRefresh.to_json(:include => [:movies])
-    end
-  end
-
-  get '/users/:id' do
-    user = User.find(params[:id])
-    user.to_json()
-  end
-
-end
+# end
