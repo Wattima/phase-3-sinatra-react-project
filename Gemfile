@@ -56,3 +56,5 @@ gem "faker"
 
 # Generate fake images
 # gem "lorempixel"
+
+gem "bcrypt"
