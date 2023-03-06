@@ -12,7 +12,12 @@ end
 use Rack::JSONBodyParser
 
 # Our application
-use UsersController
-use TasksController
-use CategoriesController
 run ApplicationController
+use UsersController
+use CreationsController
+use TagsController
+use LikesController
+use LibItemsController
+use FlagsController
+use DonationsController
+use TaglinksController

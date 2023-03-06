@@ -10,28 +10,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_06_060659) do
+ActiveRecord::Schema.define(version: 2023_03_06_223820) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creation_id"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["creation_id"], name: "index_comments_on_creation_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "priority"
-    t.integer "category_id"
+  create_table "creations", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "length"
+    t.string "category"
     t.integer "user_id"
-    t.datetime "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_complete", default: false
+    t.index ["user_id"], name: "index_creations_on_user_id"
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creation_id"
+    t.float "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creation_id"], name: "index_donations_on_creation_id"
+    t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "flags", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creation_id"
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creation_id"], name: "index_flags_on_creation_id"
+    t.index ["user_id"], name: "index_flags_on_user_id"
+  end
+
+  create_table "lib_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creation_id"
+    t.index ["creation_id"], name: "index_lib_items_on_creation_id"
+    t.index ["user_id"], name: "index_lib_items_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creation_id"
+    t.index ["creation_id"], name: "index_likes_on_creation_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "taglinks", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "creation_id"
+    t.index ["creation_id"], name: "index_taglinks_on_creation_id"
+    t.index ["tag_id"], name: "index_taglinks_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

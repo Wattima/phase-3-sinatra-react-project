@@ -1,56 +1,36 @@
-# require 'pry'
-
-# class UsersController < ApplicationController
-#   post '/login' do
-#     user = User.find_by(username: params[:username])
-#     if user && user.authenticate(params[:password])
-#       session[:user_id] = user.id
-#       { success: true }.to_json
-#     else
-#       { success: false, error: 'Invalid username or password' }.to_json
-#     end
-#   end
-
-#   delete '/logout' do
-#     session.clear
-#     { success: true }.to_json
-#   end
-
-# end
-
 class UsersController < ApplicationController
-
-  get '/users' do
-    users = User.all
-    users.to_json
+  get "/users" do
+    User.all.to_json
   end
 
-  get '/users/:id' do
+  get "/users/:id" do
     user = User.find(params[:id])
-    user.to_json
+    user.to_json(only: [:id], include: [:likes, :flags, :lib_items])
   end
 
-  post '/users' do # Make sure front end requests are nested objects similar to the nested hashes in Ruby
-    user = User.new(params[:user])
-    if user.save
-      user.to_json
+  post "/current_users" do
+    user = User.find_by(username: params[:username], password: params[:password])
+    if user == nil
+      "Could not find that user. Please enter a valid username and password.".to_json
     else
-      { errors: user.errors.full_messages }.to_json
+      user.to_json(only: [:id])
     end
   end
 
-  patch '/users/:id' do
-    user = User.find(params[:id])
-    if user && user.update(params[:user])
-      user.to_json
+  post "/new_user" do
+    user = User.find_by(username: params[:username])
+    if user == nil
+      new_user = User.create(username: params[:username], password: params[:password])
+      new_user.to_json(only: [:id])
     else
-      { errors: user.errors.full_messages }.to_json
+      "Username already exists. Please create a unique username.".to_json
     end
   end
 
-  delete '/users/:id' do
+  delete "/users/:id" do
     user = User.find(params[:id])
     user.destroy
-    user.to_json
+    {message: "Your account has been removed."}.to_json
   end
+
 end
