@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2023_03_06_060659) do
     t.datetime "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_complete", default: false
   end
 
   create_table "users", force: :cascade do |t|
