@@ -36,6 +36,7 @@ gem "require_all", "~> 3.0"
 
 # These gems will only be used when we are running the application locally
 group :development do
+  gem "faker", "~> 2.18"
   gem "pry", "~> 0.14.1"
 
   # Automatically reload when there are changes
@@ -52,9 +53,9 @@ group :test do
 end
 
 # Generate fake data
-gem "faker"
+
 
 # Generate fake images
 # gem "lorempixel"
 
-gem "bcrypt"
+# gem "bcrypt"
