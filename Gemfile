@@ -59,3 +59,4 @@ end
 # gem "lorempixel"
 
 # gem "bcrypt"
+ruby '2.7.4'
