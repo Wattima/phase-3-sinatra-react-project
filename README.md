@@ -23,21 +23,21 @@ For this project, you must:
 - Have at least two models with a one-to-many relationship.
 - At a minimum, set up the following API routes in Sinatra:
   - create and read actions for both models
-  - full CRUD capability for one of the models: 
-  The update action should be implemented using a form that is 
-  pre-filled with existing values for the object. On submission of 
-  the form, the object should update. Note: Using a like button or 
+  - full CRUD capability for one of the models:
+  The update action should be implemented using a form that is
+  pre-filled with existing values for the object. On submission of
+  the form, the object should update. Note: Using a like button or
   similar will not meet the update requirement.
 - Build a separate React frontend application that interacts with the API to
   perform CRUD actions.
 - Implement proper front end state management. You should be updating state using a
-  setState function after receiving your response from a POST, PATCH, or DELETE 
-  request. You should NOT be relying on a GET request to update state. 
+  setState function after receiving your response from a POST, PATCH, or DELETE
+  request. You should NOT be relying on a GET request to update state.
 - Use good OO design patterns. You should have separate classes for each of your
-  models, and create instance and class methods as necessary. 
+  models, and create instance and class methods as necessary.
 - Routes in your application (both client side and back end) should follow RESTful
   conventions.
-- Use your back end optimally. Pass JSON for related associations to the front 
+- Use your back end optimally. Pass JSON for related associations to the front
   end from the back end. You should use active record methods in your controller to grab
   the needed data from your database and provide as JSON to the front end. You
   should NOT be relying on filtering front end state or a separate fetch request to
@@ -136,3 +136,30 @@ fetch("http://localhost:9292/test")
 [dbdiagram.io]: https://dbdiagram.io/
 [postman download]: https://www.postman.com/downloads/
 [network tab]: https://developer.chrome.com/docs/devtools/network/
+
+
+# Overview
+This is the backend component of a movie management application built with Ruby and Sinatra. The backend provides a RESTful API for creating, reading, updating, and deleting tasks, and also handles user persisting tasks to a particular user's db. The application uses an sqlite3 database to store data.
+
+# Setup
+To run the backend component of the application, you will need to have Ruby (version 2.6 or later) and sqlite3 installed on your system. You can then follow these steps:
+
+1. Clone the repository to your local machine.
+
+2. Install the required gems by running bundle install.
+
+3. Run the database migrations by running rake db:migrate.
+4. Optionally, you can populate the database with some initial data by running rake db:seed
+5. Start the backend server by running ruby app.rb.
+6. The backend server should now be running on http://localhost:9292.
+
+# API Documentation
+The backend provides the following API endpoints:
+
+1. GET /tasks: Returns a JSON array of all tasks.
+2. POST /tasks: Creates a new movie with the given title and description.
+3. GET /tasks/:id: Returns the movie with the given ID as a JSON object.
+4. PATCH /tasks/:id: Updates the movie with the given ID with the given title and description.
+5. DELETE /tasks/:id: Deletes the movie with the given ID.
+
+
