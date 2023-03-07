@@ -12,7 +12,7 @@ To run the backend component of the application, you will need to have Ruby (ver
 5. Run the database migrations by running rake db:migrate.
 6. Optionally, you can populate the database with some initial data by running ruby seeds.rb.
 7. Start the backend server by running ruby app.rb.
-8. The backend server should now be running on http://localhost:4567.
+8. The backend server should now be running on http://localhost:9292.
 
 # API Documentation
 The backend provides GET, POST, PATCH and DELETE API endpoints:
