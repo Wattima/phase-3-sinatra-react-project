@@ -8,7 +8,7 @@ To run the backend component of the application, you will need to have Ruby (ver
 1. Clone the repository to your local machine.
 2. Navigate to the backend directory.
 3. Install the required gems by running bundle install.
-4. Create a PostgreSQL database by running rake db:create.
+4. Create an sqlite3 database by running rake db:create.
 5. Run the database migrations by running rake db:migrate.
 6. Optionally, you can populate the database with some initial data by running ruby seeds.rb.
 7. Start the backend server by running ruby app.rb.
