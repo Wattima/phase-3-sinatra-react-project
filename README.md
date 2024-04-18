@@ -11,7 +11,7 @@ To run the backend component of the application, you will need to have Ruby (ver
 4. Create an sqlite3 database by running rake db:create.
 5. Run the database migrations by running rake db:migrate.
 6. Optionally, you can populate the database with some initial data by running ruby seeds.rb.
-7. Start the backend server by running ruby app.rb.
+7. Start the backend server by running ruby rake server.
 8. The backend server should now be running on http://localhost:9292.
 
 # API Documentation
